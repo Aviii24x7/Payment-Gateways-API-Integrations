@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thanks for your order!</title>
+
+  {% comment %} <link rel="stylesheet" href="style.css"> {% endcomment %}
+</head>
+<body>
+    {% comment %} <script>
+        // Perform an action when the page is loaded 
+        // Hitting the webhook URL
+        window.addEventListener('DOMContentLoaded', () => {
+            // Make a fetch request to the desired URL
+            fetch("/stripe-webhook")
+                .then(response => {
+                    // Handle response if needed
+                    console.log("Request sent to /stripe-webhook");
+                })
+                .catch(error => {
+                    console.error("Error sending request:", error);
+                });
+        });
+    </script> {% endcomment %}
+  <section>
+    <h1>
+      PAYMENT IS SUCCESFUL!
+    </h1>
+  </section>
+</body>
+</html>

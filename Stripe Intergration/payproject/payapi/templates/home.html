@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Buy cool new product</title>
+    {% comment %} <link rel="stylesheet" href="style.css"> {% endcomment %}
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="{% static 'main.js' %}"></script> 
+
+  </head>
+  <body>
+    <section>
+      <form action="/create-checkout-session" method="POST">
+        {% csrf_token %}
+        <button type="submit" id="checkout-button">Checkout</button>
+      </form>
+    </section>
+  </body>
+</html>

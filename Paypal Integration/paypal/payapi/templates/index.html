@@ -1,0 +1,95 @@
+data_from_web = {
+    "intent": "CAPTURE",  # Capture payment immediately after the customer makes a payment
+    "application_context": {
+        "brand_name": "MY BRAND",  # The label that overrides the business name in the PayPal account on the PayPal site
+        "locale": "en-IN",
+        "user_action": "PAY_NOW",  # Process the payment immediately when the customer clicks Pay Now
+        "return_url": "http://localhost/return",  # Payment successful redirection URL
+        "cancel_url": "http://localhost/cancel",  # Payment cancel redirection URL
+        "payment_method": {
+            "payer_selected": "PAYPAL"
+        }
+    },
+    "payer": {
+        # Pass and prefill buyer details like first name, last name, email address and phone number
+        "name": {
+            "given_name": "John",
+            "surname": "Doe"
+        },
+        "email_address": "customer@example.com",
+        "phone": {
+            "phone_number": {
+                "national_number": "9874563210"
+            }
+        },
+        "address": {
+            # Pass and prefill buyer billing address details
+            "address_line_1": "10, east street",
+            "address_line_2": "second building",
+            "admin_area_2": "Mumbai",
+            "admin_area_1": "Maharashtra",
+            "postal_code": "400029",
+            "country_code": "IN"
+        }
+    },
+    "purchase_units": [{
+        "amount": {
+            "currency_code": "INR",
+            "value": "170.00",
+            # Total amount
+            "breakdown": {
+                "item_total": {
+                    "currency_code": "INR",  # Three-character ISO-4217 currency code that identifies the currency
+                    "value": "180.00"
+                },
+                "discount": {
+                    # The discount for all items within a given purchase_unit
+                    "currency_code": "INR",
+                    "value": "10.00"
+                }
+            }
+        },
+        "items": [
+            # Pass line item details
+            {
+                "name": "T-Shirt",
+                "description": "Green XL",
+                "sku": "sku01",
+                "unit_amount": {
+                    "currency_code": "INR",
+                    "value": "90.00"
+                },
+                "quantity": "1",
+                "category": "PHYSICAL_GOODS"  # Item category type
+            },
+            {
+                "name": "Shoes",
+                "description": "Running, Size 10.5",
+                "sku": "sku02",
+                "unit_amount": {
+                    "currency_code": "INR",
+                    "value": "45.00"
+                },
+                "quantity": "2",
+                "category": "PHYSICAL_GOODS"
+            }
+        ],
+        "soft_descriptor": "CC_STATEMENT_NAME",  # Payment descriptor on account transactions on the customer’s credit card statement
+        "invoice_id": "INV-1234567890",  # Pass the invoice ID. It needs to be unique. It will help to identify the transaction in PayPal side
+        "shipping": {
+            # Pass and prefill shipping address details
+            "name": {
+                "full_name": "John Doe"
+            },
+            "address": {
+                # Pass and prefill buyer shipping address details
+                "address_line_1": "10, east street",
+                "address_line_2": "first building",
+                "admin_area_2": "Mumbai",
+                "admin_area_1": "Maharashtra",
+                "postal_code": "400029",
+                "country_code": "IN"
+            }
+        }
+    }]
+}
